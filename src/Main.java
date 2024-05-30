@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.time.LocalDate;
 public class Main {
     //Задание №1
 
@@ -13,37 +14,31 @@ public class Main {
     //Задание №2
 
     public static void installationOperatingSystem (byte version, short year){
-        if (version == 0){
-            if (year < 2015){
-                System.out.println("Установите облегченную версию для iOS");
-            } else {
-                System.out.println("Установите обычную версию для iOS");
-            }
-        }
-        if (version == 1){
-            if (year < 2015){
-                System.out.println("Установите облегченную версию для Android");
-            } else {
-                System.out.println("Установите обычную версию для Android");
-            }
+        if (version == 0 && year < 2015) {
+            System.out.println("Установите облегченную версию для iOS");
+        } else if (version == 1 && year < 2015) {
+            System.out.println("Установите облегченную версию для Android");
+        } else if (version == 1 && year >= 2015) {
+            System.out.println("Установите обычную версию для Android");
+        } else if (version == 0 && year >= 2015) {
+            System.out.println("Установите обычную версию для iOS");
         }
     }
 
     //Задание №3
 
-    public static void deliveryBankCard (byte deliveryDistance){
-        deliveryDistance = 95;
+    public static String deliveryBankCard (byte deliveryDistance) {
         if (deliveryDistance < 20) {
-            System.out.println("Потребуется дней: " + 1);
+            return ("Потребуется дней" + 1);
         } else if (deliveryDistance >= 20 && deliveryDistance < 60) {
-            System.out.println("Потребуется дней: " + 2);
+            return ("Потребуется дней" + 2);
         } else if (deliveryDistance >= 60 && deliveryDistance < 100) {
-            System.out.println("Потребуется дней: " + 3);
+            return ("Потребуется дней" + 3);
         } else {
-            System.out.println("Доставки нет");
+            return ("Доставки нет");
         }
-
     }
+
 
     public static void main(String[] args) {
         /*
@@ -73,8 +68,8 @@ public class Main {
 
         System.out.println("Задача №2");
 
-        byte version = 1;
-        short year2 = 2014;
+        byte version = 0;
+        short year2 = (short) LocalDate.now().getYear();
         installationOperatingSystem(version, year2);
 
         /*
@@ -82,9 +77,7 @@ public class Main {
         который на вход принимает дистанцию и возвращает итоговое количество дней доставки.
          */
 
-        System.out.println("Задание №3");
-
-        byte distance = 90;
+        byte distance = 40;
         deliveryBankCard(distance);
     }
 }
