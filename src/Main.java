@@ -29,11 +29,11 @@ public class Main {
 
     public static String deliveryBankCard (byte deliveryDistance) {
         if (deliveryDistance < 20) {
-            return ("Потребуется дней" + 1);
+            return ("Потребуется дней " + 1);
         } else if (deliveryDistance >= 20 && deliveryDistance < 60) {
-            return ("Потребуется дней" + 2);
+            return ("Потребуется дней " + 2);
         } else if (deliveryDistance >= 60 && deliveryDistance < 100) {
-            return ("Потребуется дней" + 3);
+            return ("Потребуется дней " + 3);
         } else {
             return ("Доставки нет");
         }
@@ -77,7 +77,10 @@ public class Main {
         который на вход принимает дистанцию и возвращает итоговое количество дней доставки.
          */
 
+        System.out.println("Задача №3");
+
         byte distance = 40;
         deliveryBankCard(distance);
+        System.out.println(deliveryBankCard(distance));
     }
 }
