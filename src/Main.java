@@ -1,28 +1,32 @@
-import java.util.Scanner;
 import java.time.LocalDate;
 public class Main {
     //Задание №1
 
-    public static void calculationLeapYear (int year){
-        if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {
-            System.out.println(year + " год — високосный год");
+    public static boolean isLeapYear(int year) {
+        if (year % 4 == 0) {
+            if (year % 100 == 0) {
+                return year % 400 == 0;
+            } else {
+                return true;
+            }
         } else {
-            System.out.println(year + " год — невисокосный год");
+            return false;
         }
     }
 
     //Задание №2
 
-    public static void installationOperatingSystem (byte version, short year){
+    public static String installationOperatingSystem (byte version, short year){
         if (version == 0 && year < 2015) {
-            System.out.println("Установите облегченную версию для iOS");
+            return ("Установите облегченную версию для iOS");
         } else if (version == 1 && year < 2015) {
-            System.out.println("Установите облегченную версию для Android");
+            return ("Установите облегченную версию для Android");
         } else if (version == 1 && year >= 2015) {
-            System.out.println("Установите обычную версию для Android");
+            return ("Установите обычную версию для Android");
         } else if (version == 0 && year >= 2015) {
-            System.out.println("Установите обычную версию для iOS");
+            return ("Установите обычную версию для iOS");
         }
+        return("");
     }
 
     //Задание №3
@@ -51,9 +55,13 @@ public class Main {
 
         System.out.println("Задача №1");
 
-        Scanner sc = new Scanner(System.in);
-        int year = sc.nextInt();
-        calculationLeapYear(year);
+        int year = 2020;
+        if (isLeapYear(year)) {
+            System.out.println(year + " год - високосный год");
+        } else {
+            System.out.println(year + " год - невисокосный год");
+        }
+
 
         /*
         Напишите метод, куда подаются два параметра: тип операционной системы
@@ -71,6 +79,7 @@ public class Main {
         byte version = 0;
         short year2 = (short) LocalDate.now().getYear();
         installationOperatingSystem(version, year2);
+        System.out.println(installationOperatingSystem(version, year2));
 
         /*
         Ваша задача — доработать код, а именно написать метод,
